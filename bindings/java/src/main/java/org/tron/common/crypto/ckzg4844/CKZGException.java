@@ -2,7 +2,7 @@ package main.java.org.tron.common.crypto.ckzg4844;
 
 import java.util.Arrays;
 
-import static ethereum.ckzg4844.CKZGException.CKZGError.fromErrorCode;
+import static main.java.org.tron.common.crypto.ckzg4844.CKZGException.CKZGError.fromErrorCode;
 
 /** Thrown when there is an error in the underlying c-kzg library. */
 public class CKZGException extends RuntimeException {
