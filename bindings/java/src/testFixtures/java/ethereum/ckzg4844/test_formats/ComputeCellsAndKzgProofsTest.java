@@ -1,6 +1,6 @@
 package ethereum.ckzg4844.test_formats;
 
-import ethereum.ckzg4844.CellsAndProofs;
+import main.java.org.tron.common.crypto.ckzg4844.CellsAndProofs;
 import ethereum.ckzg4844.TestUtils;
 import java.util.List;
 import java.util.stream.Collectors;

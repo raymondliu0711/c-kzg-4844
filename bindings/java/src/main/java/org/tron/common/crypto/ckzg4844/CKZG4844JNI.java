@@ -1,4 +1,4 @@
-package ethereum.ckzg4844;
+package main.java.org.tron.common.crypto.ckzg4844;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -118,10 +118,10 @@ public class CKZG4844JNI {
       throw new IllegalArgumentException("Resource " + resource + " does not exist.");
     }
 
-    try (is) {
+    try (InputStream closableIs = is) {
       Path jniWillLoadFrom = Files.createTempFile("kzg-trusted-setup", ".txt");
       jniWillLoadFrom.toFile().deleteOnExit();
-      Files.copy(is, jniWillLoadFrom, StandardCopyOption.REPLACE_EXISTING);
+      Files.copy(closableIs, jniWillLoadFrom, StandardCopyOption.REPLACE_EXISTING);
       loadTrustedSetup(jniWillLoadFrom.toString(), precompute);
     } catch (IOException ex) {
       throw new UncheckedIOException("Error loading trusted setup from resource " + resource, ex);

@@ -1,6 +1,6 @@
-package ethereum.ckzg4844;
+package main.java.org.tron.common.crypto.ckzg4844;
 
-import static ethereum.ckzg4844.CKZGException.CKZGError.fromErrorCode;
+import static main.java.org.tron.common.crypto.ckzg4844.CKZGException.CKZGError.fromErrorCode;
 
 import java.util.Arrays;
 

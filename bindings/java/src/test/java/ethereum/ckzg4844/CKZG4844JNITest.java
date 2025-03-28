@@ -1,10 +1,10 @@
 package ethereum.ckzg4844;
 
-import static ethereum.ckzg4844.CKZG4844JNI.BYTES_PER_CELL;
-import static ethereum.ckzg4844.CKZG4844JNI.BYTES_PER_COMMITMENT;
-import static ethereum.ckzg4844.CKZG4844JNI.BYTES_PER_PROOF;
-import static ethereum.ckzg4844.CKZG4844JNI.CELLS_PER_EXT_BLOB;
-import static ethereum.ckzg4844.CKZGException.CKZGError.C_KZG_BADARGS;
+import static main.java.org.tron.common.crypto.ckzg4844.CKZG4844JNI.BYTES_PER_CELL;
+import static main.java.org.tron.common.crypto.ckzg4844.CKZG4844JNI.BYTES_PER_COMMITMENT;
+import static main.java.org.tron.common.crypto.ckzg4844.CKZG4844JNI.BYTES_PER_PROOF;
+import static main.java.org.tron.common.crypto.ckzg4844.CKZG4844JNI.CELLS_PER_EXT_BLOB;
+import static main.java.org.tron.common.crypto.ckzg4844.CKZGException.CKZGError.C_KZG_BADARGS;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;

@@ -1,4 +1,4 @@
-package ethereum.ckzg4844;
+package main.java.org.tron.common.crypto.ckzg4844;
 
 public class CellsAndProofs {
   private final byte[] cells;
