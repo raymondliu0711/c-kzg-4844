@@ -25,7 +25,7 @@ void throw_exception(JNIEnv *env, const char *message)
 
 void throw_c_kzg_exception(JNIEnv *env, C_KZG_RET error_code, const char *message)
 {
-  jclass exception_class = (*env)->FindClass(env, "ethereum/ckzg4844/CKZGException");
+  jclass exception_class = (*env)->FindClass(env, "org/tron/common/crypto/ckzg4844/CKZGException");
   jstring error_message = (*env)->NewStringUTF(env, message);
   jmethodID exception_constructor = (*env)->GetMethodID(env, exception_class, "<init>", "(ILjava/lang/String;)V");
   jobject exception = (*env)->NewObject(env, exception_class, exception_constructor, error_code, error_message);
@@ -56,7 +56,7 @@ KZGSettings *allocate_settings(JNIEnv *env)
   return s;
 }
 
-JNIEXPORT void JNICALL Java_ethereum_ckzg4844_CKZG4844JNI_loadTrustedSetup__Ljava_lang_String_2(JNIEnv *env, jclass thisCls, jstring file)
+JNIEXPORT void JNICALL Java_org_tron_common_crypto_ckzg4844_CKZG4844JNI_loadTrustedSetup__Ljava_lang_String_2(JNIEnv *env, jclass thisCls, jstring file)
 {
   if (settings)
   {
@@ -91,7 +91,7 @@ JNIEXPORT void JNICALL Java_ethereum_ckzg4844_CKZG4844JNI_loadTrustedSetup__Ljav
   }
 }
 
-JNIEXPORT void JNICALL Java_ethereum_ckzg4844_CKZG4844JNI_loadTrustedSetup___3BJ_3BJ(JNIEnv *env, jclass thisCls, jbyteArray g1, jlong g1Count, jbyteArray g2, jlong g2Count)
+JNIEXPORT void JNICALL Java_org_tron_common_crypto_ckzg4844_CKZG4844JNI_loadTrustedSetup___3BJ_3BJ(JNIEnv *env, jclass thisCls, jbyteArray g1, jlong g1Count, jbyteArray g2, jlong g2Count)
 {
   if (settings)
   {
@@ -135,7 +135,7 @@ JNIEXPORT void JNICALL Java_ethereum_ckzg4844_CKZG4844JNI_loadTrustedSetup___3BJ
   }
 }
 
-JNIEXPORT void JNICALL Java_ethereum_ckzg4844_CKZG4844JNI_freeTrustedSetup(JNIEnv *env, jclass thisCls)
+JNIEXPORT void JNICALL Java_org_tron_common_crypto_ckzg4844_CKZG4844JNI_freeTrustedSetup(JNIEnv *env, jclass thisCls)
 {
   if (settings == NULL)
   {
@@ -145,7 +145,7 @@ JNIEXPORT void JNICALL Java_ethereum_ckzg4844_CKZG4844JNI_freeTrustedSetup(JNIEn
   reset_trusted_setup();
 }
 
-JNIEXPORT jbyteArray JNICALL Java_ethereum_ckzg4844_CKZG4844JNI_blobToKzgCommitment(JNIEnv *env, jclass thisCls, jbyteArray blob)
+JNIEXPORT jbyteArray JNICALL Java_org_tron_common_crypto_ckzg4844_CKZG4844JNI_blobToKzgCommitment(JNIEnv *env, jclass thisCls, jbyteArray blob)
 {
   if (settings == NULL)
   {
@@ -178,7 +178,7 @@ JNIEXPORT jbyteArray JNICALL Java_ethereum_ckzg4844_CKZG4844JNI_blobToKzgCommitm
   return commitment;
 }
 
-JNIEXPORT jobject JNICALL Java_ethereum_ckzg4844_CKZG4844JNI_computeKzgProof(JNIEnv *env, jclass thisCls, jbyteArray blob, jbyteArray z_bytes)
+JNIEXPORT jobject JNICALL Java_org_tron_common_crypto_ckzg4844_CKZG4844JNI_computeKzgProof(JNIEnv *env, jclass thisCls, jbyteArray blob, jbyteArray z_bytes)
 {
   if (settings == NULL)
   {
@@ -223,7 +223,7 @@ JNIEXPORT jobject JNICALL Java_ethereum_ckzg4844_CKZG4844JNI_computeKzgProof(JNI
     return NULL;
   }
 
-  jclass proof_and_y_class = (*env)->FindClass(env, "ethereum/ckzg4844/ProofAndY");
+  jclass proof_and_y_class = (*env)->FindClass(env, "org/tron/common/crypto/ckzg4844/ProofAndY");
   if (proof_and_y_class == NULL)
   {
     throw_exception(env, "Failed to find ProofAndY class.");
@@ -247,7 +247,7 @@ JNIEXPORT jobject JNICALL Java_ethereum_ckzg4844_CKZG4844JNI_computeKzgProof(JNI
   return proof_and_y;
 }
 
-JNIEXPORT jbyteArray JNICALL Java_ethereum_ckzg4844_CKZG4844JNI_computeBlobKzgProof(JNIEnv *env, jclass thisCls, jbyteArray blob, jbyteArray commitment_bytes)
+JNIEXPORT jbyteArray JNICALL Java_org_tron_common_crypto_ckzg4844_CKZG4844JNI_computeBlobKzgProof(JNIEnv *env, jclass thisCls, jbyteArray blob, jbyteArray commitment_bytes)
 {
   if (settings == NULL)
   {
@@ -290,7 +290,7 @@ JNIEXPORT jbyteArray JNICALL Java_ethereum_ckzg4844_CKZG4844JNI_computeBlobKzgPr
   return proof;
 }
 
-JNIEXPORT jboolean JNICALL Java_ethereum_ckzg4844_CKZG4844JNI_verifyKzgProof(JNIEnv *env, jclass thisCls, jbyteArray commitment_bytes, jbyteArray z_bytes, jbyteArray y_bytes, jbyteArray proof_bytes)
+JNIEXPORT jboolean JNICALL Java_org_tron_common_crypto_ckzg4844_CKZG4844JNI_verifyKzgProof(JNIEnv *env, jclass thisCls, jbyteArray commitment_bytes, jbyteArray z_bytes, jbyteArray y_bytes, jbyteArray proof_bytes)
 {
   if (settings == NULL)
   {
@@ -348,7 +348,7 @@ JNIEXPORT jboolean JNICALL Java_ethereum_ckzg4844_CKZG4844JNI_verifyKzgProof(JNI
   return (jboolean)out;
 }
 
-JNIEXPORT jboolean JNICALL Java_ethereum_ckzg4844_CKZG4844JNI_verifyBlobKzgProof(JNIEnv *env, jclass thisCls, jbyteArray blob, jbyteArray commitment_bytes, jbyteArray proof_bytes)
+JNIEXPORT jboolean JNICALL Java_org_tron_common_crypto_ckzg4844_CKZG4844JNI_verifyBlobKzgProof(JNIEnv *env, jclass thisCls, jbyteArray blob, jbyteArray commitment_bytes, jbyteArray proof_bytes)
 {
   if (settings == NULL)
   {
@@ -397,7 +397,7 @@ JNIEXPORT jboolean JNICALL Java_ethereum_ckzg4844_CKZG4844JNI_verifyBlobKzgProof
   return (jboolean)out;
 }
 
-JNIEXPORT jboolean JNICALL Java_ethereum_ckzg4844_CKZG4844JNI_verifyBlobKzgProofBatch(JNIEnv *env, jclass thisCls, jbyteArray blobs, jbyteArray commitments_bytes, jbyteArray proofs_bytes, jlong count)
+JNIEXPORT jboolean JNICALL Java_org_tron_common_crypto_ckzg4844_CKZG4844JNI_verifyBlobKzgProofBatch(JNIEnv *env, jclass thisCls, jbyteArray blobs, jbyteArray commitments_bytes, jbyteArray proofs_bytes, jlong count)
 {
   if (settings == NULL)
   {
